@@ -1,0 +1,21 @@
+{
+  "type": "panel",
+  "name": "ES Funnel Mix",
+  "id": "orgid-es-mix-funnel",
+  "dataFormats": ["table"],
+  "info": {
+    "description": "ES Funnel Mix",
+    "author": {
+      "name": "Nam Le"
+    },
+    "keywords": ["funnel"],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "6.3.x",
+    "plugins": []
+  }
+}
