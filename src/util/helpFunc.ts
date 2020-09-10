@@ -61,11 +61,11 @@ export const processData = (data: Array<Frame>) => {
       {
         Visitors: total,
         'Enagaged Customers': Math.round(engaged),
-        '01-10m': Math.round(sub01_10 * 10) / 10,
-        '10-30m': Math.round(sub10_30 * 10) / 10,
-        '30-60m': Math.round(sub30_60 * 10) / 10,
-        '60-90m': Math.round(sub60_90 * 10) / 10,
-        '90-180m': Math.round(sub90_180 * 10) / 10,
+        '01-10m': (Math.round(sub01_10 * 10) / 10).toLocaleString(),
+        '10-30m': (Math.round(sub10_30 * 10) / 10).toLocaleString(),
+        '30-60m': (Math.round(sub30_60 * 10) / 10).toLocaleString(),
+        '60-90m': (Math.round(sub60_90 * 10) / 10).toLocaleString(),
+        '90-180m': (Math.round(sub90_180 * 10) / 10).toLocaleString(),
       },
     ],
     data: [

@@ -9,7 +9,7 @@ import useCsvDownloader from 'use-csv-downloader';
 interface Props extends PanelProps<PanelOptions> {}
 interface State {
   csvData: Array<{
-    [key: string]: number;
+    [key: string]: number | string;
   }>;
   data: Array<{ label: string; quantity: number }>;
 }
