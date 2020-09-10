@@ -13835,7 +13835,8 @@ function (_super) {
 
     _this.handleDownload = function () {
       var downloadCsv = use_csv_downloader__WEBPACK_IMPORTED_MODULE_5___default()({
-        quote: ''
+        quote: '',
+        delimiter: ';'
       });
       downloadCsv(_this.state.csvData, 'visitors&percentage_duration.csv');
     };

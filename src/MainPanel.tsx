@@ -61,7 +61,7 @@ export class MainPanel extends PureComponent<Props, State> {
   }
 
   handleDownload = () => {
-    const downloadCsv = useCsvDownloader({ quote: '' });
+    const downloadCsv = useCsvDownloader({ quote: '', delimiter: ';' });
     downloadCsv(this.state.csvData, 'visitors&percentage_duration.csv');
   };
 
