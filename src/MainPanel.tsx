@@ -4,17 +4,12 @@ import { PanelOptions, Frame } from 'types';
 import { Funnel } from './Funnel-React/dist';
 import { processData } from './util/helpFunc';
 import Icon from './img/save_icon.svg';
-import { CSVLink } from 'react-csv';
+import useCsvDownloader from 'use-csv-downloader';
 
 interface Props extends PanelProps<PanelOptions> {}
 interface State {
   csvData: Array<{
-    total: number;
-    sub01_10: number;
-    sub10_30: number;
-    sub30_60: number;
-    sub60_90: number;
-    sub90_180: number;
+    [key: string]: number;
   }>;
   data: Array<{ label: string; quantity: number }>;
 }
@@ -65,9 +60,14 @@ export class MainPanel extends PureComponent<Props, State> {
     }
   }
 
+  handleDownload = () => {
+    const downloadCsv = useCsvDownloader({ quote: '' });
+    downloadCsv(this.state.csvData, 'visitors&percentage_duration.csv');
+  };
+
   render() {
     const { width, height } = this.props;
-    const { data, csvData } = this.state;
+    const { data } = this.state;
 
     if (data.length === 0) {
       return <div />;
@@ -75,22 +75,7 @@ export class MainPanel extends PureComponent<Props, State> {
 
     return (
       <div style={{ width: width, height: height, position: 'relative' }}>
-        <CSVLink
-          headers={[
-            { label: 'Visitors', key: 'total' },
-            { label: 'Engaged Customers', key: 'engaged' },
-            { label: '01-10m', key: 'sub01_10' },
-            { label: '10-30m', key: 'sub10_30' },
-            { label: '30-60m', key: 'sub30_60' },
-            { label: '60-90m', key: 'sub60_90' },
-            { label: '90-180m', key: 'sub90_180' },
-          ]}
-          data={csvData}
-          filename="visitors&duration-percentage.csv"
-          style={{ position: 'absolute', top: 0, right: 2, zIndex: 2 }}
-        >
-          <img src={Icon} />
-        </CSVLink>
+        <img src={Icon} onClick={this.handleDownload} style={{ position: 'absolute', top: 0, right: 2, zIndex: 2 }} />
         <Funnel
           labelKey="label"
           height={height - 100}

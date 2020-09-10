@@ -18,6 +18,6 @@
   "dependencies": {
     "date-fns": "^2.16.1",
     "date-fns-timezone": "^0.1.4",
-    "react-csv": "^2.0.3"
+    "use-csv-downloader": "0.0.0"
   }
 }

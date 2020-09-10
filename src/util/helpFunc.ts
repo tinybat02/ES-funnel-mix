@@ -59,13 +59,13 @@ export const processData = (data: Array<Frame>) => {
   return {
     csvData: [
       {
-        total,
-        engaged: Math.round(engaged),
-        sub01_10: Math.round(sub01_10 * 10) / 10,
-        sub10_30: Math.round(sub10_30 * 10) / 10,
-        sub30_60: Math.round(sub30_60 * 10) / 10,
-        sub60_90: Math.round(sub60_90 * 10) / 10,
-        sub90_180: Math.round(sub90_180 * 10) / 10,
+        Visitors: total,
+        'Enagaged Customers': Math.round(engaged),
+        '01-10m': Math.round(sub01_10 * 10) / 10,
+        '10-30m': Math.round(sub10_30 * 10) / 10,
+        '30-60m': Math.round(sub30_60 * 10) / 10,
+        '60-90m': Math.round(sub60_90 * 10) / 10,
+        '90-180m': Math.round(sub90_180 * 10) / 10,
       },
     ],
     data: [
