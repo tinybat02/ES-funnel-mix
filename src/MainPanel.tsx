@@ -3,22 +3,33 @@ import { PanelProps } from '@grafana/data';
 import { PanelOptions, Frame } from 'types';
 import { Funnel } from './Funnel-React/dist';
 import { processData } from './util/helpFunc';
+import Icon from './img/save_icon.svg';
+import { CSVLink } from 'react-csv';
 
 interface Props extends PanelProps<PanelOptions> {}
 interface State {
+  csvData: Array<{
+    total: number;
+    sub01_10: number;
+    sub10_30: number;
+    sub30_60: number;
+    sub60_90: number;
+    sub90_180: number;
+  }>;
   data: Array<{ label: string; quantity: number }>;
 }
 
 export class MainPanel extends PureComponent<Props, State> {
   state: State = {
+    csvData: [],
     data: [],
   };
 
   componentDidMount() {
     if (this.props.data.series.length > 0 && this.props.data.series.length == 6) {
       const series = this.props.data.series as Array<Frame>;
-      const data = processData(series);
-      this.setState({ data });
+      const { data, csvData } = processData(series);
+      this.setState({ data, csvData });
     }
   }
 
@@ -32,21 +43,22 @@ export class MainPanel extends PureComponent<Props, State> {
             { label: 'Engaged Customers', quantity: 0 },
             { label: 'Returning Customers', quantity: 0 },
           ],
+          csvData: [],
         });
         return;
       }
 
       const { data: dataOld } = prevState;
-      const dataNew = processData(series);
+      const { data: dataNew, csvData } = processData(series);
 
       if (dataOld.length == 0) {
-        this.setState({ data: dataNew });
+        this.setState({ data: dataNew, csvData });
         return;
       }
 
       for (let i = 0; i < dataOld.length; i++) {
         if (dataOld[i].quantity !== dataNew[i].quantity) {
-          this.setState({ data: dataNew });
+          this.setState({ data: dataNew, csvData });
           break;
         }
       }
@@ -55,14 +67,30 @@ export class MainPanel extends PureComponent<Props, State> {
 
   render() {
     const { width, height } = this.props;
-    const { data } = this.state;
+    const { data, csvData } = this.state;
 
     if (data.length === 0) {
       return <div />;
     }
 
     return (
-      <div style={{ width: width, height: height }}>
+      <div style={{ width: width, height: height, position: 'relative' }}>
+        <CSVLink
+          headers={[
+            { label: 'Visitors', key: 'total' },
+            { label: 'Engaged Customers', key: 'engaged' },
+            { label: '01-10m', key: 'sub01_10' },
+            { label: '10-30m', key: 'sub10_30' },
+            { label: '30-60m', key: 'sub30_60' },
+            { label: '60-90m', key: 'sub60_90' },
+            { label: '90-180m', key: 'sub90_180' },
+          ]}
+          data={csvData}
+          filename={`${new Date().toLocaleDateString()}.csv`}
+          style={{ position: 'absolute', top: 0, right: 2, zIndex: 2 }}
+        >
+          <img src={Icon} />
+        </CSVLink>
         <Funnel
           labelKey="label"
           height={height - 100}
