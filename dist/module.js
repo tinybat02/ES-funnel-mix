@@ -8071,7 +8071,7 @@ function (_super) {
         key: 'sub90_180'
       }],
       data: csvData,
-      filename: new Date().toLocaleDateString() + ".csv",
+      filename: "visitors&duration-percentage.csv",
       style: {
         position: 'absolute',
         top: 0,

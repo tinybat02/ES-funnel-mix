@@ -86,7 +86,7 @@ export class MainPanel extends PureComponent<Props, State> {
             { label: '90-180m', key: 'sub90_180' },
           ]}
           data={csvData}
-          filename={`${new Date().toLocaleDateString()}.csv`}
+          filename="visitors&duration-percentage.csv"
           style={{ position: 'absolute', top: 0, right: 2, zIndex: 2 }}
         >
           <img src={Icon} />
