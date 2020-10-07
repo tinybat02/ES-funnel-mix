@@ -13936,7 +13936,6 @@ function (_super) {
       height: height - 100,
       width: width,
       colors: {
-        //graph: ['#1890FF', '#BAE7FF'], // array or string : 'red' || '#666'
         graph: ['red', 'orange', 'yellow', 'green'],
         label: '#000',
         value: '#000'
@@ -14057,6 +14056,7 @@ var processData = function processData(data) {
   });
   var per = Math.round(sub60_90 * 10) / 10 + Math.round(sub90_180 * 10) / 10;
   var engaged = per * total / 100;
+  var revisited = 15 * engaged / 100;
   return {
     csvData: [{
       Visitors: total,
@@ -14075,7 +14075,7 @@ var processData = function processData(data) {
       quantity: engaged
     }, {
       label: 'Returning Customers',
-      quantity: 0
+      quantity: revisited
     }]
   };
 };

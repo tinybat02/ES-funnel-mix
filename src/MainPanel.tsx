@@ -81,7 +81,6 @@ export class MainPanel extends PureComponent<Props, State> {
           height={height - 100}
           width={width}
           colors={{
-            //graph: ['#1890FF', '#BAE7FF'], // array or string : 'red' || '#666'
             graph: ['red', 'orange', 'yellow', 'green'],
             label: '#000',
             value: '#000',
