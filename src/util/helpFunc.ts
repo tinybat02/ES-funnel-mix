@@ -55,7 +55,7 @@ export const processData = (data: Array<Frame>) => {
   });
   const per = Math.round(sub60_90 * 10) / 10 + Math.round(sub90_180 * 10) / 10;
   const engaged = (per * total) / 100;
-  const revisited = (15 * engaged) / 100;
+  const revisited = 0.033 * total;
 
   return {
     csvData: [

@@ -14056,7 +14056,7 @@ var processData = function processData(data) {
   });
   var per = Math.round(sub60_90 * 10) / 10 + Math.round(sub90_180 * 10) / 10;
   var engaged = per * total / 100;
-  var revisited = 15 * engaged / 100;
+  var revisited = 0.033 * total;
   return {
     csvData: [{
       Visitors: total,
