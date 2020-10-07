@@ -13845,7 +13845,7 @@ function (_super) {
   }
 
   MainPanel.prototype.componentDidMount = function () {
-    if (this.props.data.series.length > 0 && this.props.data.series.length == 6) {
+    if (this.props.data.series.length > 0 && this.props.data.series.length == 7) {
       var series = this.props.data.series;
 
       var _a = Object(_util_helpFunc__WEBPACK_IMPORTED_MODULE_3__["processData"])(series),
@@ -14018,7 +14018,8 @@ var processData = function processData(data) {
       sub10_30 = 0,
       sub30_60 = 0,
       sub60_90 = 0,
-      sub90_180 = 0;
+      sub90_180 = 0,
+      revisit = 0;
   data.map(function (category) {
     if (category.name == 'Sum count') category.fields[0].values.buffer.map(function (item) {
       if (item) total += item;
@@ -14053,10 +14054,14 @@ var processData = function processData(data) {
         return item != null;
       }) || 0;
     }
+
+    if (category.name == 'docs') {
+      //@ts-ignore
+      revisit = category.fields[0].values.buffer[0].ratio.toFixed(2) / 100;
+    }
   });
   var per = Math.round(sub60_90 * 10) / 10 + Math.round(sub90_180 * 10) / 10;
   var engaged = per * total / 100;
-  var revisited = 0.033 * total;
   return {
     csvData: [{
       Visitors: total,
@@ -14075,7 +14080,7 @@ var processData = function processData(data) {
       quantity: engaged
     }, {
       label: 'Returning Customers',
-      quantity: revisited
+      quantity: revisit * total
     }]
   };
 };

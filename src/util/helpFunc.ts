@@ -6,7 +6,8 @@ export const processData = (data: Array<Frame>) => {
     sub10_30 = 0,
     sub30_60 = 0,
     sub60_90 = 0,
-    sub90_180 = 0;
+    sub90_180 = 0,
+    revisit = 0;
   data.map(category => {
     if (category.name == 'Sum count')
       category.fields[0].values.buffer.map(item => {
@@ -52,10 +53,15 @@ export const processData = (data: Array<Frame>) => {
           .reverse()
           .find(item => item != null) || 0;
     }
+
+    if (category.name == 'docs') {
+      //@ts-ignore
+      revisit = category.fields[0].values.buffer[0].ratio.toFixed(2) / 100;
+    }
   });
+
   const per = Math.round(sub60_90 * 10) / 10 + Math.round(sub90_180 * 10) / 10;
   const engaged = (per * total) / 100;
-  const revisited = 0.033 * total;
 
   return {
     csvData: [
@@ -72,7 +78,7 @@ export const processData = (data: Array<Frame>) => {
     data: [
       { label: 'Visitors', quantity: total },
       { label: 'Engaged Customers', quantity: engaged },
-      { label: 'Returning Customers', quantity: revisited },
+      { label: 'Returning Customers', quantity: revisit * total },
     ],
   };
 };

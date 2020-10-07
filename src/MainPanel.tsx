@@ -21,7 +21,7 @@ export class MainPanel extends PureComponent<Props, State> {
   };
 
   componentDidMount() {
-    if (this.props.data.series.length > 0 && this.props.data.series.length == 6) {
+    if (this.props.data.series.length > 0 && this.props.data.series.length == 7) {
       const series = this.props.data.series as Array<Frame>;
       const { data, csvData } = processData(series);
       this.setState({ data, csvData });
