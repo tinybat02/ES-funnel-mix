@@ -13845,18 +13845,20 @@ function (_super) {
   }
 
   MainPanel.prototype.componentDidMount = function () {
-    if (this.props.data.series.length > 0 && this.props.data.series.length == 7) {
-      var series = this.props.data.series;
+    if (this.props.data.series.length > 0
+    /*  && this.props.data.series.length == 7 */
+    ) {
+        var series = this.props.data.series;
 
-      var _a = Object(_util_helpFunc__WEBPACK_IMPORTED_MODULE_3__["processData"])(series),
-          data = _a.data,
-          csvData = _a.csvData;
+        var _a = Object(_util_helpFunc__WEBPACK_IMPORTED_MODULE_3__["processData"])(series),
+            data = _a.data,
+            csvData = _a.csvData;
 
-      this.setState({
-        data: data,
-        csvData: csvData
-      });
-    }
+        this.setState({
+          data: data,
+          csvData: csvData
+        });
+      }
   };
 
   MainPanel.prototype.componentDidUpdate = function (prevProps, prevState) {
