@@ -78,7 +78,7 @@ export const processData = (data: Array<Frame>) => {
     data: [
       { label: 'Visitors', quantity: total },
       { label: 'Engaged Customers', quantity: engaged },
-      { label: 'Returning Customers', quantity: revisit * total },
+      { label: 'Returning Customers', quantity: revisit * engaged },
     ],
   };
 };

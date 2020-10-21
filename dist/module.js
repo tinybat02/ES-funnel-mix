@@ -14082,7 +14082,7 @@ var processData = function processData(data) {
       quantity: engaged
     }, {
       label: 'Returning Customers',
-      quantity: revisit * total
+      quantity: revisit * engaged
     }]
   };
 };
