@@ -60,7 +60,7 @@ export const processData = (data: Array<Frame>) => {
     }
   });
 
-  const per = Math.round(sub60_90 * 10) / 10 + Math.round(sub90_180 * 10) / 10;
+  const per = Math.round(sub30_60 * 10) / 10 + Math.round(sub60_90 * 10) / 10 + Math.round(sub90_180 * 10) / 10;
   const engaged = (per * total) / 100;
 
   return {

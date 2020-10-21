@@ -14062,7 +14062,7 @@ var processData = function processData(data) {
       revisit = category.fields[0].values.buffer[0].ratio.toFixed(2) / 100;
     }
   });
-  var per = Math.round(sub60_90 * 10) / 10 + Math.round(sub90_180 * 10) / 10;
+  var per = Math.round(sub30_60 * 10) / 10 + Math.round(sub60_90 * 10) / 10 + Math.round(sub90_180 * 10) / 10;
   var engaged = per * total / 100;
   return {
     csvData: [{
