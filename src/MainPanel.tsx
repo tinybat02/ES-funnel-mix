@@ -75,9 +75,7 @@ export class MainPanel extends PureComponent<Props, State> {
 
     return (
       <div style={{ width: width, height: height, position: 'relative' }}>
-        {{
-          /* <img src={Icon} onClick={this.handleDownload} style={{ position: 'absolute', top: 0, right: 2, zIndex: 2 }} /> */
-        }}
+        {/* <img src={Icon} onClick={this.handleDownload} style={{ position: 'absolute', top: 0, right: 2, zIndex: 2 }} /> */}
         <Funnel
           labelKey="label"
           height={height - 100}

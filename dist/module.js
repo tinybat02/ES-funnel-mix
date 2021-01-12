@@ -6482,8 +6482,6 @@ function (_super) {
         height: height,
         position: 'relative'
       }
-    }, {
-      /* <img src={Icon} onClick={this.handleDownload} style={{ position: 'absolute', top: 0, right: 2, zIndex: 2 }} /> */
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Funnel_React_dist__WEBPACK_IMPORTED_MODULE_2__["Funnel"], {
       labelKey: "label",
       height: height - 100,
