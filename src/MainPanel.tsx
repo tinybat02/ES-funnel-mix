@@ -3,8 +3,8 @@ import { PanelProps } from '@grafana/data';
 import { PanelOptions, Frame } from 'types';
 import { Funnel } from './Funnel-React/dist';
 import { processData } from './util/helpFunc';
-import Icon from './img/save_icon.svg';
-import useCsvDownloader from 'use-csv-downloader';
+// import Icon from './img/save_icon.svg';
+// import useCsvDownloader from 'use-csv-downloader';
 
 interface Props extends PanelProps<PanelOptions> {}
 interface State {
@@ -60,10 +60,10 @@ export class MainPanel extends PureComponent<Props, State> {
     }
   }
 
-  handleDownload = () => {
-    const downloadCsv = useCsvDownloader({ quote: '', delimiter: ';' });
-    downloadCsv(this.state.csvData, 'visitors&percentage_duration.csv');
-  };
+  // handleDownload = () => {
+  //   const downloadCsv = useCsvDownloader({ quote: '', delimiter: ';' });
+  //   downloadCsv(this.state.csvData, 'visitors&percentage_duration.csv');
+  // };
 
   render() {
     const { width, height } = this.props;
@@ -75,7 +75,9 @@ export class MainPanel extends PureComponent<Props, State> {
 
     return (
       <div style={{ width: width, height: height, position: 'relative' }}>
-        <img src={Icon} onClick={this.handleDownload} style={{ position: 'absolute', top: 0, right: 2, zIndex: 2 }} />
+        {{
+          /* <img src={Icon} onClick={this.handleDownload} style={{ position: 'absolute', top: 0, right: 2, zIndex: 2 }} /> */
+        }}
         <Funnel
           labelKey="label"
           height={height - 100}
