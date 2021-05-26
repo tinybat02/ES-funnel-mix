@@ -9,6 +9,10 @@
       "name": "Nam Le"
     },
     "keywords": ["funnel"],
+    "logos": {
+      "small": "img/funnel.svg",
+      "large": "img/funnel.svg"
+    },
     "screenshots": [],
     "version": "%VERSION%",
     "updated": "%TODAY%"
